@@ -22,9 +22,19 @@ class ExampleUnitTest {
     }
     @Test
     fun test_factory() {
-        val user = User.makeUser("Ivan Petrovich")
+        val user = User.makeUser(null)
         val user2 = User.makeUser("Oleg Ivanovich")
-        val user3 = User.makeUser("Sergei Ivanovich")
+        val user3 =user.copy("2", lastName = "Cean")
+            print("$user \n$user3")
+    }
+    @Test
+    fun test_decomposition(){
+        val user = User.makeUser("Jon Week")
+        fun getUserInfo() = user
+
+        var (id, firstName, lastName) = getUserInfo()
+
+        println("$id, $firstName, $lastName")
 
     }
 }
