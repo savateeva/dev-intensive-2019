@@ -23,7 +23,7 @@ data class User(
     constructor(id: String):this(id, firstName = "John", lastName = "Doe $id")
 
     init {
-        println("It's user $firstName $lastName ")
+       // println("It's user $firstName $lastName ")
     }
 
     fun printMy():Unit{
