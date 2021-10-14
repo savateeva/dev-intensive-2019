@@ -34,7 +34,7 @@ class ExampleUnitTest {
 
         var (id, firstName, lastName) = getUserInfo()
 
-        println("$id, $firstName, $lastName")
+        println("${user.component1()}, ${user.component2()}, $lastName")
 
     }
 }
