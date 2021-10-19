@@ -4,8 +4,13 @@ import org.junit.Test
 import ru.skillbranch.devintensive.extensions.TimeUnits
 import ru.skillbranch.devintensive.extensions.add
 import ru.skillbranch.devintensive.extensions.format
+import ru.skillbranch.devintensive.extensions.toUserView
+import ru.skillbranch.devintensive.models.BaseMessage
+import ru.skillbranch.devintensive.models.Chat
+import ru.skillbranch.devintensive.models.TextMessage
 
 import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 /**
@@ -57,5 +62,24 @@ class ExampleUnitTest {
             ${user4.LastVisit?.format()}
         """.trimIndent())
 
+    }
+
+    @Test
+    fun test_dataq_mapping(){
+        val user = User.makeUser("Savateeva")
+
+        val userView = user.toUserView()
+
+        userView.printMe()
+        println(Utils.transliteration("Иванова Пе тр Сергеевич", "_"))
+    }
+
+    @Test
+    fun test_abstract_factory(){
+        val user = User.makeUser("Savateeva Ludmila")
+        val textMessage = BaseMessage.makeMessage(user,Chat("0"),date = Date(), type = "text", payload = "any text message")
+        val imageMessage = BaseMessage.makeMessage(user,Chat("0"),date = Date(), type = "image", payload = "any image url")
+        println(textMessage.formatMessage())
+        println(imageMessage.formatMessage())
     }
 }
